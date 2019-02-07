@@ -1,0 +1,9 @@
+adm pessoa que tem acesso as informacoes tipo secretaria pode ser varias
+acesso as dados e fazer agendamento 
+
+word uma base
+
+exercicio 6
+
+nome telefone email para cadastro
+
