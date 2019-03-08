@@ -1,0 +1,14 @@
+C:\Users\51418943800\Desktop\SPRINT 1\SP-MEDICAL-GROUP\Vs Codigo\SpMedicalGroupAPI\SpMedicalGroupAPI\bin\Debug\netcoreapp2.1\SpMedicalGroupAPI.deps.json
+C:\Users\51418943800\Desktop\SPRINT 1\SP-MEDICAL-GROUP\Vs Codigo\SpMedicalGroupAPI\SpMedicalGroupAPI\bin\Debug\netcoreapp2.1\SpMedicalGroupAPI.runtimeconfig.json
+C:\Users\51418943800\Desktop\SPRINT 1\SP-MEDICAL-GROUP\Vs Codigo\SpMedicalGroupAPI\SpMedicalGroupAPI\bin\Debug\netcoreapp2.1\SpMedicalGroupAPI.runtimeconfig.dev.json
+C:\Users\51418943800\Desktop\SPRINT 1\SP-MEDICAL-GROUP\Vs Codigo\SpMedicalGroupAPI\SpMedicalGroupAPI\bin\Debug\netcoreapp2.1\SpMedicalGroupAPI.dll
+C:\Users\51418943800\Desktop\SPRINT 1\SP-MEDICAL-GROUP\Vs Codigo\SpMedicalGroupAPI\SpMedicalGroupAPI\obj\Debug\netcoreapp2.1\SpMedicalGroupAPI.csprojAssemblyReference.cache
+C:\Users\51418943800\Desktop\SPRINT 1\SP-MEDICAL-GROUP\Vs Codigo\SpMedicalGroupAPI\SpMedicalGroupAPI\obj\Debug\netcoreapp2.1\SpMedicalGroupAPI.csproj.CoreCompileInputs.cache
+C:\Users\51418943800\Desktop\SPRINT 1\SP-MEDICAL-GROUP\Vs Codigo\SpMedicalGroupAPI\SpMedicalGroupAPI\obj\Debug\netcoreapp2.1\SpMedicalGroupAPI.RazorAssemblyInfo.cache
+C:\Users\51418943800\Desktop\SPRINT 1\SP-MEDICAL-GROUP\Vs Codigo\SpMedicalGroupAPI\SpMedicalGroupAPI\obj\Debug\netcoreapp2.1\SpMedicalGroupAPI.RazorAssemblyInfo.cs
+C:\Users\51418943800\Desktop\SPRINT 1\SP-MEDICAL-GROUP\Vs Codigo\SpMedicalGroupAPI\SpMedicalGroupAPI\obj\Debug\netcoreapp2.1\SpMedicalGroupAPI.AssemblyInfoInputs.cache
+C:\Users\51418943800\Desktop\SPRINT 1\SP-MEDICAL-GROUP\Vs Codigo\SpMedicalGroupAPI\SpMedicalGroupAPI\obj\Debug\netcoreapp2.1\SpMedicalGroupAPI.AssemblyInfo.cs
+C:\Users\51418943800\Desktop\SPRINT 1\SP-MEDICAL-GROUP\Vs Codigo\SpMedicalGroupAPI\SpMedicalGroupAPI\obj\Debug\netcoreapp2.1\SpMedicalGroupAPI.RazorTargetAssemblyInfo.cache
+C:\Users\51418943800\Desktop\SPRINT 1\SP-MEDICAL-GROUP\Vs Codigo\SpMedicalGroupAPI\SpMedicalGroupAPI\bin\Debug\netcoreapp2.1\SpMedicalGroupAPI.pdb
+C:\Users\51418943800\Desktop\SPRINT 1\SP-MEDICAL-GROUP\Vs Codigo\SpMedicalGroupAPI\SpMedicalGroupAPI\obj\Debug\netcoreapp2.1\SpMedicalGroupAPI.dll
+C:\Users\51418943800\Desktop\SPRINT 1\SP-MEDICAL-GROUP\Vs Codigo\SpMedicalGroupAPI\SpMedicalGroupAPI\obj\Debug\netcoreapp2.1\SpMedicalGroupAPI.pdb
