@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SpMedicalGroupAPI.Domains;
@@ -13,6 +14,7 @@ namespace SpMedicalGroupAPI.Controllers
     [ApiController]
     public class ClinicasController : ControllerBase
     {
+        [Authorize(Roles = "Administrador")]
         [HttpPost("Cadastrar")]
         public IActionResult CadastrarClinica(Clinica clinica)
         {
@@ -32,6 +34,7 @@ namespace SpMedicalGroupAPI.Controllers
             }
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpGet("Listar")]
         public IActionResult ListarClinica()
         {
@@ -47,6 +50,7 @@ namespace SpMedicalGroupAPI.Controllers
             }
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpDelete("Deletar/{id}")]
         public IActionResult DeletarClinica(int id)
         {
@@ -72,6 +76,7 @@ namespace SpMedicalGroupAPI.Controllers
             }
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpPut("Atualizar")]
         public IActionResult AtualizarClinica(Clinica clinica)
         {
