@@ -31,5 +31,20 @@ namespace SpMedicalGroupAPI.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpGet("Listar")]
+        public IActionResult ListarUsuario()
+        {
+            try
+            {
+                using (SpMedicalGroupContext ctx = new SpMedicalGroupContext())
+                    return Ok(ctx.Usuarios.ToList());
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest();
+            }
+        }
     }
 }

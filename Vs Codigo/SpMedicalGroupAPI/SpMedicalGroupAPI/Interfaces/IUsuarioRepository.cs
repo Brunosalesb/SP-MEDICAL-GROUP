@@ -11,5 +11,7 @@ namespace SpMedicalGroupAPI.Interfaces
         void CadastrarUsuario(Usuarios usuario);
 
         Usuarios BuscarPorEmailESenha(string email, string senha);
+
+        List<Usuarios> ListarUsuario();
     }
 }

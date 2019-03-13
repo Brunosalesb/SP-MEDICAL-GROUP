@@ -8,7 +8,7 @@ namespace SpMedicalGroupAPI.Interfaces
 {
     interface IConsultaRepository
     {
-        List<Consulta> ListarConsulta();
+        List<Consulta> ListarConsulta(int id, string idTipoUsuario);
 
         void CadastarConsulta(Consulta consulta);
 

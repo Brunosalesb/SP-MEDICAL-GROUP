@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using SpMedicalGroupAPI.Interfaces;
 
 namespace SpMedicalGroupAPI
 {
@@ -48,9 +49,6 @@ namespace SpMedicalGroupAPI
                 };
             });
 
-
-
-            //Em breve
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
@@ -59,6 +57,8 @@ namespace SpMedicalGroupAPI
                         .AllowAnyHeader()
                         .AllowCredentials());
             });
+
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

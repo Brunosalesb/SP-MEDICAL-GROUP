@@ -25,5 +25,7 @@ namespace SpMedicalGroupAPI.Repositories
         }
 
         public void CadastrarUsuario(Usuarios usuario) => throw new NotImplementedException();
+
+        public List<Usuarios> ListarUsuario() => throw new NotImplementedException();
     }
 }

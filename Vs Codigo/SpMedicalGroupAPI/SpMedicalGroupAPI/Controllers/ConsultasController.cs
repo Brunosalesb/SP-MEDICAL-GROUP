@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SpMedicalGroupAPI.Domains;
+using SpMedicalGroupAPI.Interfaces;
+using SpMedicalGroupAPI.Repositories;
 
 namespace SpMedicalGroupAPI.Controllers
 {
@@ -14,14 +18,22 @@ namespace SpMedicalGroupAPI.Controllers
     [ApiController]
     public class ConsultasController : ControllerBase
     {
-        [Authorize(Roles ="Administrador,Medico")]
+        private IConsultaRepository ConsultaRepository { get; set; }
+
+        public ConsultasController()
+        {
+            ConsultaRepository = new ConsultaRepository();
+        }
+
+        [Authorize]
         [HttpGet("Listar")]
         public IActionResult ListarConsulta()
         {
             try
             {
-                using (SpMedicalGroupContext ctx = new SpMedicalGroupContext())
-                    return Ok(ctx.Consulta.ToList());
+                int id = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+                string idTipoUsuario = Convert.ToString(HttpContext.User.Claims.First(c => c.Type == ClaimTypes.Role).Value);
+                return Ok(ConsultaRepository.ListarConsulta(id, idTipoUsuario));
             }
             catch 
             {
@@ -109,5 +121,7 @@ namespace SpMedicalGroupAPI.Controllers
                 return BadRequest();
             }
         }
+
+
     }
 }
