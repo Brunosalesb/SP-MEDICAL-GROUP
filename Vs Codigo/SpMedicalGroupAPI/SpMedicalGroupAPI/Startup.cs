@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using SpMedicalGroupAPI.Interfaces;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace SpMedicalGroupAPI
 {
@@ -58,7 +59,11 @@ namespace SpMedicalGroupAPI
                         .AllowCredentials());
             });
 
-           
+
+            services.AddSwaggerGen(c => 
+            {
+                c.SwaggerDoc("v1", new Info { Title = "SpMedicalGroupAPI", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -70,6 +75,13 @@ namespace SpMedicalGroupAPI
             }
             app.UseAuthentication();
             app.UseMvc();
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "SpMedicalGroupAPI");
+            });
         }
     }
 }

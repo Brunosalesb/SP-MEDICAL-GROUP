@@ -11,6 +11,7 @@ namespace SpMedicalGroupAPI.Repositories
 {
     public class UsuarioRepository : IUsuarioRepository
     {
+
         public Usuarios BuscarPorEmailESenha(string email, string senha)
         {
             using (SpMedicalGroupContext ctx = new SpMedicalGroupContext())
@@ -24,8 +25,12 @@ namespace SpMedicalGroupAPI.Repositories
             }
         }
 
+        public List<Usuarios> ListarUsuario() => throw new NotImplementedException();
+
         public void CadastrarUsuario(Usuarios usuario) => throw new NotImplementedException();
 
-        public List<Usuarios> ListarUsuario() => throw new NotImplementedException();
+        public void AtualizarUsuario(Usuarios usuario) => throw new NotImplementedException();
+
+        public void DeletarUsuario(int id) => throw new NotImplementedException();
     }
 }
