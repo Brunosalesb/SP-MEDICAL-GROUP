@@ -60,34 +60,8 @@ namespace SpMedicalGroupAPI.Controllers
             }
         }
 
-        [Authorize(Roles ="Administrador")]
-        [HttpDelete("Deletar/{id}")]
-        public IActionResult DeletarConsulta(int id)
-        {
-            try
-            {
-                using (SpMedicalGroupContext ctx = new SpMedicalGroupContext())
-                {
-                    Consulta consultaProcurada = ctx.Consulta.Find(id);
 
-                    if (consultaProcurada == null)
-                    {
-                        return NotFound();
-                    }
-
-                    ctx.Consulta.Remove(consultaProcurada);
-                    ctx.SaveChanges();
-                }
-                    return Ok();
-            }
-            catch 
-            {
-
-                return BadRequest();
-            }
-        }
-
-        [Authorize(Roles ="Medico")]
+        [Authorize(Roles ="Administrador,Medico")]
         [HttpPut("Atualizar")]
         public IActionResult AtualizarConsulta(Consulta consulta)
         {
@@ -115,13 +89,37 @@ namespace SpMedicalGroupAPI.Controllers
                 }
                     return Ok();
             }
-            catch (Exception ex)
+            catch 
+            {
+                return BadRequest();
+            }
+        }
+
+        [Authorize(Roles ="Administrador")]
+        [HttpDelete("Deletar/{id}")]
+        public IActionResult DeletarConsulta(int id)
+        {
+            try
+            {
+                using (SpMedicalGroupContext ctx = new SpMedicalGroupContext())
+                {
+                    Consulta consultaProcurada = ctx.Consulta.Find(id);
+
+                    if (consultaProcurada == null)
+                    {
+                        return NotFound();
+                    }
+
+                    ctx.Consulta.Remove(consultaProcurada);
+                    ctx.SaveChanges();
+                }
+                    return Ok();
+            }
+            catch 
             {
 
                 return BadRequest();
             }
         }
-
-
     }
 }

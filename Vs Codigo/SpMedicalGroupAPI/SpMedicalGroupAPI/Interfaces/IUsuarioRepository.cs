@@ -13,5 +13,9 @@ namespace SpMedicalGroupAPI.Interfaces
         Usuarios BuscarPorEmailESenha(string email, string senha);
 
         List<Usuarios> ListarUsuario();
+
+        void AtualizarUsuario(Usuarios usuario);
+
+        void DeletarUsuario(int id);
     }
 }

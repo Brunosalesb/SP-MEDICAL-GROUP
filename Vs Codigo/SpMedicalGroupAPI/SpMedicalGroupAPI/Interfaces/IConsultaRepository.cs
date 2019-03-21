@@ -15,5 +15,6 @@ namespace SpMedicalGroupAPI.Interfaces
         void DeletarConsulta(int id);
 
         void AtualizarConsulta(Consulta consulta);
+
     }
 }

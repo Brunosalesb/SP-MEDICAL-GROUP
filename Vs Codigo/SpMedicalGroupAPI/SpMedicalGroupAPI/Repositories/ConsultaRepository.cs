@@ -9,6 +9,8 @@ namespace SpMedicalGroupAPI.Repositories
 {
     public class ConsultaRepository : IConsultaRepository
     {
+        public void AdicionarDescricao(Consulta consulta) => throw new NotImplementedException();
+
         public void AtualizarConsulta(Consulta consulta) => throw new NotImplementedException();
 
         public void CadastarConsulta(Consulta consulta) => throw new NotImplementedException();

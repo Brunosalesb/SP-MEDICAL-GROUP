@@ -62,7 +62,7 @@ namespace SpMedicalGroupAPI.Controllers
                     token = new JwtSecurityTokenHandler().WriteToken(token)
                 });
             }
-            catch (Exception ex)
+            catch 
             {
                 return BadRequest();
             }
