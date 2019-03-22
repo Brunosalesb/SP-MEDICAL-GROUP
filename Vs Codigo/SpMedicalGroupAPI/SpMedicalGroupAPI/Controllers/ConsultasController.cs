@@ -91,7 +91,6 @@ namespace SpMedicalGroupAPI.Controllers
             }
             catch 
             {
-
                 return BadRequest();
             }
         }
