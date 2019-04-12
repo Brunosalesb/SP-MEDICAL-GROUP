@@ -40,27 +40,6 @@
     padding-top: 5%;
 }
 
-#barraPaciente{
-    margin-left: 30%;
-    margin-right: 30%;
-     margin-top: 2%;
-}
-
-#barraMedico{
-    margin-left: 30%;
-    margin-right: 30%;
-     margin-top: 2%;
-}
-
-#barraData{
-    margin-left: 29%;
-    margin-right: 20.7%;
-}
-
-#botao{
-    background-color: #99CC99;
-}
-
 #footer {
     margin-top: 50px;
     bottom: 0px;
