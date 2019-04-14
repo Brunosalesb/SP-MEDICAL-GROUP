@@ -1,12 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+import './index.css';
+import NaoEncontrada from "./Pages/NaoEncontrada/NaoEncontrada";
+import App from './Pages/App/App';
+import Cadastrar from './Pages/Cadastrar/Cadastrar'
+import {Route, BrowserRouter as Router, Switch, Redirect} from 'react-router-dom';
+import {usuarioAutenticado} from './services/auth';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const Permissao = ({component : Component}) => (
+    <Route
+    render = {props => usuarioAutenticado() ?
+        (<Component {...props} />) :
+        (<Redirect to={{pathname :  '/',state : {from : props.location}}}/>)
+    }
+    />
+);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+const rotas = (
+    <Router>
+        <div>
+            <Switch>
+                <Route exact path="/" component={App}/>
+                <Permissao path="/cadastrar" component={Cadastrar}/>
+                <Route component={NaoEncontrada}/>
+            </Switch>
+        </div>
+    </Router>
+)
+
+ReactDOM.render(rotas, document.getElementById('root'));
+
 serviceWorker.unregister();
