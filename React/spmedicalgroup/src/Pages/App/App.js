@@ -36,26 +36,25 @@ efetuaLogin(event){
   })
 }
 
-
   render() {
     return (
       <nav>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
-      <div class="barra-up"></div>
-      <img src={logo} id="logo" class="rounded mx-auto d-block" alt="logo"></img>
+      <div className="barra-up"></div>
+      <img src={logo} id="logo" className="rounded mx-auto d-block" alt="logo"></img>
 
       <form onSubmit={this.efetuaLogin.bind(this)}>
-        <div class="text-center" id="login">
+        <div className="text-center" id="login">
 
-          <div class="form-group">
-            <input type="email" value={this.state.email} onChange={this.atualizaEstadoEmail.bind(this)} class="form-control" id="email" placeholder="Email"></input>
+          <div className="form-group">
+            <input type="email" value={this.state.email} onChange={this.atualizaEstadoEmail.bind(this)} className="form-control" id="email" placeholder="Email"></input>
           </div>
 
-            <div class="form-group">
-              <input type="password" value={this.state.senha} onChange={this.atualizaEstadoSenha.bind(this)} class="form-control" id="senha" placeholder="Senha"></input>
+            <div className="form-group">
+              <input type="password" value={this.state.senha} onChange={this.atualizaEstadoSenha.bind(this)} className="form-control" id="senha" placeholder="Senha"></input>
             </div>
-              <button type="submit" id="botao" class="btn btn-secondary">Entrar</button>
+              <button type="submit" id="botao" className="btn btn-secondary">Entrar</button>
 
         </div>
       </form>

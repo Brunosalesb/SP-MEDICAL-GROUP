@@ -7,6 +7,7 @@ class Cadastrar extends Component{
     render(){
         return(
     <body>
+      <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -18,6 +19,7 @@ class Cadastrar extends Component{
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script> 
+    </head>
 
     <div class="barra-up"></div>
 
@@ -76,13 +78,13 @@ class Cadastrar extends Component{
     
     <div class="form-group row" id="barraData">
     <div class="col-10">
-        <input class="form-control" type="datetime-local" value="2019-06-22T12:00:00" id="example-datetime-local-input"></input>
+        <input class="form-control" type="datetime" id="example-datetime-local-input"></input>
     </div>
     </div>
         <button type="submit" class="btn btn-secondary" id="botao">Cadastrar</button>
     </div>
 
-    <div id="footer">
+    <div id="footerCadastrar">
     &copy; All rights reserved
     </div>
     </body>
