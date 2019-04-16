@@ -2,7 +2,6 @@ import React ,{ Component } from 'react';
 import logo from '../../Assets/Img/icon-login.png';
 import banner from '../../Assets/Img/Mindful-Surgery-Banner.jpg';
 import '../../Assets/Css/Listar.css';
-import Axios from 'axios';
 
 class Listar extends Component{
     constructor(){
@@ -16,40 +15,46 @@ class Listar extends Component{
             idSituacao : ""
         }
     }
-
-    buscarConsultas(){
-        Axios.get(`http://192.168.56.1:5000/api/Consultas/Listar`)
-          .then(res => {
-            const consultas = res.data;
-            this.setState({ lista : consultas });
-          })
-    }
+      
+      buscarConsultas(){
+      let token = localStorage.getItem("smg-token");
+      fetch('http://localhost:5000/api/Consultas/Listar',{
+         method: 'GET',
+         headers : {
+           'Authorization': 'Bearer ' + token
+         }
+       })
+         .then(resposta => resposta.json())
+        .then(data => this.setState(({ lista : data })))
+         .catch(erro => console.log(erro))
+  }
 
     componentDidMount(){
         this.buscarConsultas();
     }
+  
 
     render(){
         return(
-            <body>
+            <div>
 
-            <head>
+            <div>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossOrigin="anonymous"></link>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+    crossOrigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
+    crossOrigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-            </head>
+    crossOrigin="anonymous"></script>
+            </div>
 
             <div className="barra-up"></div>
   <div className="container-fluid">
-    <img src={logo} className="logo"></img>
+    <img src={logo} className="logo" alt="logo"></img>
     <nav className="navbar navbar-expand-lg navbar-light bg-green" id="nav">
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,10 +85,9 @@ class Listar extends Component{
   <img src={banner} className="img-fluid" id="banner" alt="banner"></img>
   <h2 id="h2" className="text-center">Listar Consulta</h2>
 
-<table>
+<table className="table table-striped">
     <thead>
         <tr>
-            <th>#</th>
             <th>Prontuário</th>
             <th>Médico</th>
             <th>Data</th>
@@ -96,7 +100,6 @@ class Listar extends Component{
             this.state.lista.map(function(consulta){
                 return(
                     <tr key={consulta.id}>
-                        <td>{consulta.id}</td>
                         <td>{consulta.idProntuario}</td>
                         <td>{consulta.idMedico}</td>
                         <td>{consulta.dataDaConsulta}</td>
@@ -112,7 +115,7 @@ class Listar extends Component{
 <div id="footerListar">
     &copy; All rights reserved
 </div>
-</body>
+</div>
         );
     }
 }

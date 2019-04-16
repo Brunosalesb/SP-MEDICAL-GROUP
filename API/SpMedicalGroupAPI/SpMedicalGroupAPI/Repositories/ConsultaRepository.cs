@@ -1,5 +1,6 @@
 
-﻿using SpMedicalGroupAPI.Domains;
+using Microsoft.EntityFrameworkCore;
+using SpMedicalGroupAPI.Domains;
 using SpMedicalGroupAPI.Interfaces;
 using System;
 using System.Collections.Generic;

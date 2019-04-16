@@ -22,7 +22,7 @@ atualizaEstadoSenha(event){
 
 efetuaLogin(event){
   event.preventDefault();
-  Axios.post('http://192.168.56.1:5000/api/login',{
+  Axios.post('http://localhost:5000/api/login',{
     email : this.state.email,
     senha : this.state.senha
   })
@@ -33,6 +33,7 @@ efetuaLogin(event){
   })
   .catch(erro => {
     console.log(erro);
+    alert("Não foi possível conectar");
   })
 }
 
@@ -40,7 +41,7 @@ efetuaLogin(event){
     return (
       <nav>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link>
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossOrigin="anonymous"></link>
       <div className="barra-up"></div>
       <img src={logo} id="logo" className="rounded mx-auto d-block" alt="logo"></img>
 

@@ -75,7 +75,9 @@ namespace SpMedicalGroupAPI
                 app.UseDeveloperExceptionPage();
             }
             app.UseCors("CorsPolicy");
+
             app.UseAuthentication();
+
             app.UseMvc();
 
             app.UseSwagger();
