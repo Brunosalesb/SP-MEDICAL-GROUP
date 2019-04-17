@@ -28,7 +28,7 @@ efetuaLogin(event){
   })
   .then(data => {
     localStorage.setItem("smg-token", data.data.token);
-    this.props.history.push('/cadastrar');
+    this.props.history.push('/listar');
     console.log(data);
   })
   .catch(erro => {
