@@ -41,6 +41,8 @@ namespace SpMedicalGroupAPI.Repositories
                     return ctx.Consulta.Where(x => x.IdProntuario == prontuario.Id).ToList();
                 }
                 return null;
+
+
             }
         }
       

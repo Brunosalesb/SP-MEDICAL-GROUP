@@ -37,7 +37,7 @@ class CadastrarUsuario extends Component{
             "Content-Type" : "application/json"
         }
     })
-    .then(response => Response)
+    .then(response => response)
     .catch(erro => console.log(erro))
     }
 
@@ -84,10 +84,9 @@ render() {
       </form>
 
       <script>
-              {/* if (localStorage.GetItem('tipoUsuario') != 'Administrador') {
-             alert(ReactDOM.findDOMNode("adm"))
-            // document.querySelector("#adm").style.display="none"
-            } */}
+              if (localStorage.GetItem('tipoUsuario') != 'Administrador') {
+
+            }
       </script>
       
         <div id="footer">
