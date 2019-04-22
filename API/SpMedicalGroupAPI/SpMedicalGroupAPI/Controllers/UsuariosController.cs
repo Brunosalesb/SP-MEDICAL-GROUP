@@ -32,7 +32,6 @@ namespace SpMedicalGroupAPI.Controllers
             }
         }
 
-        [Authorize(Roles = "Administrador")]
         [HttpPost("Cadastrar")]
         public IActionResult CadastrarUsuario(Usuarios usuario)
         {

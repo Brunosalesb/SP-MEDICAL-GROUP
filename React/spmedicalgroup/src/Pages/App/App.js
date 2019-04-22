@@ -28,6 +28,7 @@ efetuaLogin(event){
   })
   .then(data => {
     localStorage.setItem("smg-token", data.data.token);
+    localStorage.setItem("tipoUsuario",data.data.tipoUsuario);
     this.props.history.push('/listar');
     console.log(data);
   })

@@ -3,7 +3,7 @@ import '../../Assets/Css/Cadastrar.css';
 import logo from '../../Assets/Img/icon-login.png';
 import banner from '../../Assets/Img/Mindful-Surgery-Banner.jpg';
 
-class Cadastrar extends Component{
+class CadastrarConsulta extends Component{
   constructor(){
     super();
     this.state = {
@@ -142,4 +142,4 @@ class Cadastrar extends Component{
     }
 }
 
-export default Cadastrar;
+export default CadastrarConsulta;

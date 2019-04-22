@@ -4,7 +4,8 @@ import * as serviceWorker from './serviceWorker';
 import './index.css';
 import NaoEncontrada from "./Pages/NaoEncontrada/NaoEncontrada";
 import App from './Pages/App/App';
-import Cadastrar from './Pages/Cadastrar/Cadastrar';
+import CadastrarUsuario from './Pages/CadastrarUsuario/CadastrarUsuario';
+import CadastrarConsulta from './Pages/CadastrarConsulta/CadastrarConsulta';
 import Listar from './Pages/Listar/Listar';
 import {Route, BrowserRouter as Router, Switch, Redirect} from 'react-router-dom';
 import {usuarioAutenticado} from './services/auth';
@@ -23,7 +24,8 @@ const rotas = (
         <div>
             <Switch>
                 <Route exact path="/" component={App}/>
-                <Permissao path="/cadastrar" component={Cadastrar}/>
+                <Route exact path="/cadastrarUsuario" component={CadastrarUsuario}/>
+                <Permissao path="/cadastrarConsulta" component={CadastrarConsulta}/>
                 <Permissao path="/listar" component={Listar}/>
                 <Route component={NaoEncontrada}/>
             </Switch>

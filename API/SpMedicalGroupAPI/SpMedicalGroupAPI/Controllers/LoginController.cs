@@ -60,10 +60,10 @@ namespace SpMedicalGroupAPI.Controllers
                         signingCredentials: creds);
                 return Ok(new
                 {
-                    token = new JwtSecurityTokenHandler().WriteToken(token)
+                    token = new JwtSecurityTokenHandler().WriteToken(token), tipoUsuario=usuario.IdTipoUsuarioNavigation.Tipo
                 });
             }
-            catch 
+            catch (Exception ex)
             {
                 return BadRequest();
             }
