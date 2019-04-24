@@ -58,21 +58,21 @@ class Listar extends Component{
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav" id="links">
           <li className="nav-item">
-            <a className="nav-link" href="#">Clinica</a>
+            <a className="nav-link" href="cadastrar">Cadastrar</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Prontuario</a>
+            <a className="nav-link" href="listar">Listar</a>
           </li>
-          <li className="nav-item dropdown">
+          {/* <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Consulta
             </a>
             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a className="dropdown-item" href="./Cadastrar.html">Cadastrar</a>
-              <a className="dropdown-item" href="./Listar.html">Listar</a>
+              <a className="dropdown-item" href="cadastrar">Cadastrar</a>
+              <a className="dropdown-item" href="listar">Listar</a>
             </div>
-          </li>
+          </li> */}
         </ul>
       </div>
     </nav>

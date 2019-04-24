@@ -24,9 +24,9 @@ const rotas = (
         <div>
             <Switch>
                 <Route exact path="/" component={App}/>
-                <Route exact path="/cadastrarUsuario" component={CadastrarUsuario}/>
-                <Permissao path="/cadastrarConsulta" component={CadastrarConsulta}/>
-                <Permissao path="/listar" component={Listar}/>
+                <Route exact path="/usuario/cadastrar" component={CadastrarUsuario}/>
+                <Permissao path="/consulta/cadastrar" component={CadastrarConsulta}/>
+                <Permissao path="/consulta/listar" component={Listar}/>
                 <Route component={NaoEncontrada}/>
             </Switch>
         </div>

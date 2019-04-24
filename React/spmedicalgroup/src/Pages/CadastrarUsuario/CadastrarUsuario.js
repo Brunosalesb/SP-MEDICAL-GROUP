@@ -61,7 +61,7 @@ render() {
                 <input type="password" value={this.state.senha} onChange={this.atualizaEstadoSenha} className="form-control" id="senha" placeholder="Senha"></input>
             </div>
 
-            <div id="paciente" className="form-check form-check-inline">
+            {/* <div id="paciente" className="form-check form-check-inline">
                 <input className="form-check-input" type="radio" value={this.state.tipoUsuario} onClick={this.atualizaEstadoTipoUsuario} name="inlineRadioOptions" id="inlineRadio1" value="3"></input>
                 <label className="form-check-label" htmlFor="inlineRadio1">Paciente</label>
             </div>
@@ -74,7 +74,7 @@ render() {
                     <div ref="adm" className="form-check form-check-inline">
                 <input className="form-check-input" type="radio" value={this.state.tipoUsuario} onClick={this.atualizaEstadoTipoUsuario} name="inlineRadioOptions" id="inlineRadio3" value="1"></input>
                 <label className="form-check-label" htmlFor="inlineRadio2">Administrador</label>
-            </div>
+            </div> */}
 
             </div>
             

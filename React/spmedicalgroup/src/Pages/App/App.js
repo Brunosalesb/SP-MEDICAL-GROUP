@@ -29,7 +29,7 @@ efetuaLogin(event){
   .then(data => {
     localStorage.setItem("smg-token", data.data.token);
     localStorage.setItem("tipoUsuario",data.data.tipoUsuario);
-    this.props.history.push('/listar');
+    this.props.history.push('/consulta/cadastrar');
     console.log(data);
   })
   .catch(erro => {

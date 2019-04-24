@@ -41,7 +41,7 @@ namespace SpMedicalGroupAPI.Controllers
                 return BadRequest();
             }
         }
-
+        [Authorize( Roles ="Administrador")]
         [HttpPost("Cadastrar")]
         public IActionResult CadastrarConsulta(Consulta consulta)
         {

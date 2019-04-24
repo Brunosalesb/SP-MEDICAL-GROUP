@@ -9,23 +9,30 @@ class CadastrarConsulta extends Component {
     this.state = {
       listaPacientes: [],
       listaMedicos: [],
-      nome: "",
-      DataDaConsulta: ""
+      idProntuario: "",
+      idMedico: "",
+      descricao: "",
+      dataDaConsulta: "",
+      idSituacao: "2"
     }
 
     this.atualizaNomeProntuario = this.atualizaNomeProntuario.bind(this);
     this.atualizaNomeMedico = this.atualizaNomeMedico.bind(this);
+    this.atualizaDescricao = this.atualizaDescricao.bind(this);
     this.atualizaDataConsulta = this.atualizaDataConsulta.bind(this);
   }
 
   atualizaNomeProntuario(event) {
-    this.setState({ nome: event.target.value })
+    this.setState({ idProntuario: event.target.value })
   }
   atualizaNomeMedico(event) {
-    this.setState({ nome: event.target.value })
+    this.setState({ idMedico: event.target.value })
+  }
+  atualizaDescricao(event) {
+    this.setState({descricao: event.target.value})
   }
   atualizaDataConsulta(event) {
-    this.setState({ DataDaConsulta: event.target.value })
+    this.setState({ dataDaConsulta: event.target.value })
   }
 
   cadastraConsulta(event) {
@@ -34,13 +41,14 @@ class CadastrarConsulta extends Component {
     console.log('cadastrar')
     fetch('http://localhost:5000/api/Consultas/Cadastrar', {
       method: 'POST',
-      body: JSON.stringify({ IdProntuario: this.state.prontuario, IdMedico: this.state.medico, DataDaConsulta: this.state.data }),
+      body: JSON.stringify({ IdProntuario: this.state.idProntuario, IdMedico: this.state.idMedico, Descricao: this.state.descricao, DataDaConsulta: this.state.dataDaConsulta, IdSituacao: this.state.idSituacao}),
       headers: {
         "Content-Type": "application/json",
         'Authorization': 'Bearer ' + token
       }
     })
       .then(response => response)
+      .then(this.props.history.push('/consulta/listar'))
       .catch(erro => console.log(erro))
   }
 
@@ -104,13 +112,13 @@ class CadastrarConsulta extends Component {
 
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
               <ul className="navbar-nav" id="links">
-                <li className="nav-item">
-                  <a className="nav-link" href="#">Clinica</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">Prontuario</a>
-                </li>
-                <li className="nav-item dropdown">
+               <li className="nav-item">
+            <a className="nav-link" href="cadastrar">Cadastrar</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="listar">Listar</a>
+          </li>
+                {/* <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Consulta
@@ -119,7 +127,7 @@ class CadastrarConsulta extends Component {
                     <a className="dropdown-item" href="./Cadastrar.html">Cadastrar</a>
                     <a className="dropdown-item" href="./Listar.html">Listar</a>
                   </div>
-                </li>
+                </li> */}
               </ul>
             </div>
           </nav>
@@ -132,11 +140,11 @@ class CadastrarConsulta extends Component {
           <div className="text-center">
             <div className="form-group" id="barraPaciente">
               <label htmlFor="exampleFormControlSelect1">Nome do paciente</label>
-              <select className="form-control" id="exampleFormControlSelect1">
+              <select onChange={this.atualizaNomeProntuario} className="form-control" id="exampleFormControlSelect1">
                 {
                   this.state.listaPacientes.map(function (paciente) {
                     return (
-                      <option key={paciente.id} value={paciente.id} onChange={paciente.atualizaNomeProntuario}>{paciente.nome}</option>
+                      <option key={paciente.id} value={paciente.id}>{paciente.nome}</option>
                     );
                   })
                 }
@@ -145,22 +153,27 @@ class CadastrarConsulta extends Component {
 
             <div className="form-group" id="barraMedico">
               <label htmlFor="exampleFormControlSelect1">Médico responsável</label>
-              <select className="form-control" id="exampleFormControlSelect1">
+              <select onChange={this.atualizaNomeMedico} className="form-control" id="exampleFormControlSelect1">
                 {
                   this.state.listaMedicos.map(function (medico) {
                     return (
-                      <option key={medico.id} value={medico.id} onChange={medico.atualizaNomeMedico}>{medico.nome}</option>
+                      <option key={medico.id} value={medico.id}>{medico.nome}</option>
                     );
                   })
                 }
               </select>
             </div>
 
+            <div className="form-group" id="barraDescricao">
+            <label htmlFor="exampleFormControlTextarea1">Descrição</label>
+            <textarea type="text" value={this.state.descricao} onChange={this.atualizaDescricao} className="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+            </div>
+
             <label htmlFor="example-datetime-local-input" className="col-2 col-form-label">Data</label>
 
             <div className="form-group row" id="barraData">
               <div className="col-10">
-                <input className="form-control" type="datetime" value={this.state.DataDaConsulta} onChange={this.atualizaDataConsulta} id="example-datetime-local-input"></input>
+                <input className="form-control" type="Datetime-Local" value={this.state.dataDaConsulta} onChange={this.atualizaDataConsulta} id="example-datetime-local-input"></input>
               </div>
             </div>
             <button type="submit" className="btn btn-secondary" id="botao">Cadastrar</button>
