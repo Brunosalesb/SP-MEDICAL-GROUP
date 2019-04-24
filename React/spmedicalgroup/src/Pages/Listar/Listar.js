@@ -7,12 +7,7 @@ class Listar extends Component{
     constructor(){
         super();
         this.state = {
-            lista : [],
-            idProntuario : "",
-            idMedico : "",
-            dataDaConsulta : "",
-            descricao : "",
-            idSituacao : ""
+            lista : []
         }
     }
       
@@ -88,7 +83,7 @@ class Listar extends Component{
 <table className="table table-striped">
     <thead>
         <tr>
-            <th>Prontuário</th>
+            <th>Paciente</th>
             <th>Médico</th>
             <th>Data</th>
             <th>Descrição</th>
@@ -100,18 +95,17 @@ class Listar extends Component{
             this.state.lista.map(function(consulta){
                 return(
                     <tr key={consulta.id}>
-                        <td>{consulta.idProntuario}</td>
-                        <td>{consulta.idMedico}</td>
+                        <td>{consulta.idProntuarioNavigation.nome}</td>
+                        <td>{consulta.idMedicoNavigation.nome}</td>
                         <td>{consulta.dataDaConsulta}</td>
                         <td>{consulta.descricao}</td>
-                        <td>{consulta.idSituacao}</td>
+                        <td>{consulta.idSituacaoNavigation.nome}</td>
                     </tr>
                 );
             })
         }
     </tbody>
 </table>
-
 <div id="footerListar">
     &copy; All rights reserved
 </div>

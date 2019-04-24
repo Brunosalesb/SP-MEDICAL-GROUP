@@ -25,21 +25,23 @@ namespace SpMedicalGroupAPI.Repositories
             {
                 if (idTipoUsuario == "Administrador")
                 {
-                    return ctx.Consulta.ToList();
+                    return ctx.Consulta.Include(x => x.IdProntuarioNavigation).Include(x => x.IdMedicoNavigation).Include(x => x.IdSituacaoNavigation).ToList();
                 }
 
                 if (idTipoUsuario == "Medico")
                 {
                     Medicos medico;
                     medico = ctx.Medicos.FirstOrDefault(x => x.IdUsuario == id);
-                    return ctx.Consulta.Where(x => x.IdMedico == medico.Id).ToList();
+                    return ctx.Consulta.Include(x => x.IdProntuarioNavigation).Include(x => x.IdSituacaoNavigation).Where(x => x.IdMedico == medico.Id).ToList();
                 }
+
                 if (idTipoUsuario == "Paciente")
                 {
                     Prontuario prontuario;
                     prontuario = ctx.Prontuario.FirstOrDefault(x => x.IdUsuario == id);
-                    return ctx.Consulta.Where(x => x.IdProntuario == prontuario.Id).ToList();
+                    return ctx.Consulta.Include(x => x.IdMedicoNavigation).Include(x => x.IdSituacaoNavigation).Where(x => x.IdProntuario == prontuario.Id).ToList();
                 }
+
                 return null;
 
 

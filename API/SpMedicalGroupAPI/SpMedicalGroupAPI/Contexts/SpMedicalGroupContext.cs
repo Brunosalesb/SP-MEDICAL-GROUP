@@ -226,7 +226,7 @@ namespace SpMedicalGroupAPI.Domains
 
                 entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.Situacao1)
+                entity.Property(e => e.Nome)
                     .HasColumnName("SITUACAO")
                     .HasMaxLength(50)
                     .IsUnicode(false);

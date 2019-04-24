@@ -36,7 +36,7 @@ namespace SpMedicalGroupAPI.Controllers
                 string idTipoUsuario = Convert.ToString(HttpContext.User.Claims.First(c => c.Type == ClaimTypes.Role).Value);
                 return Ok(ConsultaRepository.ListarConsulta(id, idTipoUsuario));
             }
-            catch 
+            catch (Exception ex)
             {
                 return BadRequest();
             }
