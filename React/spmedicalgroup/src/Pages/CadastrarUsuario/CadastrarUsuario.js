@@ -30,7 +30,7 @@ class CadastrarUsuario extends Component{
 
     cadastraUsuario(event){
         event.preventDefault();
-    fetch('http://localhost:5000/api/Usuarios/Cadastrar',{
+    fetch('http://192.168.15.28:5000/api/Usuarios/Cadastrar',{
         method : 'POST',
         body : JSON.stringify({email : this.state.email, senha : this.state.senha, IdTipoUsuario : this.state.tipoUsuario}),
         headers : {

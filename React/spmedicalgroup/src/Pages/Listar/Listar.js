@@ -13,7 +13,7 @@ class Listar extends Component{
       
       buscarConsultas(){
       let token = localStorage.getItem("smg-token");
-      fetch('http://localhost:5000/api/Consultas/Listar',{
+      fetch('http://192.168.15.28:5000/api/Consultas/Listar',{
          method: 'GET',
          headers : {
            'Authorization': 'Bearer ' + token

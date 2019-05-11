@@ -43,6 +43,7 @@ namespace SpMedicalGroupAPI.Controllers
                 {
                     // são as propriedades (atributos) referentes aos usuários - admin@admin.com -- 1
                     new Claim(JwtRegisteredClaimNames.Email, usuario.Email),
+                    new Claim("tipoUsuario", usuario.IdTipoUsuarioNavigation.Tipo),
                     new Claim(JwtRegisteredClaimNames.Jti, usuario.Id.ToString()),
                     new Claim(ClaimTypes.Role, usuario.IdTipoUsuarioNavigation.Tipo),
                 };
@@ -60,7 +61,7 @@ namespace SpMedicalGroupAPI.Controllers
                         signingCredentials: creds);
                 return Ok(new
                 {
-                    token = new JwtSecurityTokenHandler().WriteToken(token), tipoUsuario=usuario.IdTipoUsuarioNavigation.Tipo
+                    token = new JwtSecurityTokenHandler().WriteToken(token)
                 });
             }
             catch (Exception ex)

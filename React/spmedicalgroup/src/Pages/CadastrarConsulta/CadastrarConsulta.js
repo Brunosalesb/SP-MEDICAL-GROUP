@@ -39,7 +39,7 @@ class CadastrarConsulta extends Component {
     event.preventDefault();
     let token = localStorage.getItem("smg-token");
     console.log('cadastrar')
-    fetch('http://localhost:5000/api/Consultas/Cadastrar', {
+    fetch('http://192.168.15.28:5000/api/Consultas/Cadastrar', {
       method: 'POST',
       body: JSON.stringify({ IdProntuario: this.state.idProntuario, IdMedico: this.state.idMedico, Descricao: this.state.descricao, DataDaConsulta: this.state.dataDaConsulta, IdSituacao: this.state.idSituacao}),
       headers: {
@@ -54,7 +54,7 @@ class CadastrarConsulta extends Component {
 
   buscarPacientes() {
     let token = localStorage.getItem("smg-token");
-    fetch('http://localhost:5000/api/Prontuarios/Listar', {
+    fetch('http://192.168.15.28:5000/api/Prontuarios/Listar', {
       method: 'GET',
       headers: {
         'Authorization': 'Bearer ' + token
@@ -67,7 +67,7 @@ class CadastrarConsulta extends Component {
 
   buscarMedicos() {
     let token = localStorage.getItem("smg-token");
-    fetch('http://localhost:5000/api/Medicos/Listar', {
+    fetch('http://192.168.15.28:5000/api/Medicos/Listar', {
       method: 'GET',
       headers: {
         'Authorization': 'Bearer ' + token
