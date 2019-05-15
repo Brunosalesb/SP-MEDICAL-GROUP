@@ -10,6 +10,25 @@ class listarConsulta extends Component {
             />
         )
     };
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            listaDeConsultas: []
+        }
+    }
+
+    componentDidMount(){
+        this.carregaConsultas();
+    }
+
+    carregaConsultas = async () => {
+        const resposta = await Axios.get('http://192.168.5.46:5000/api/Consultas/Listar');
+        const dadosDaApi = resposta.data;
+        this.setState({listaDeConsultas : dadosDaApi});
+    };
+
+
     render(){
         return(
             <View>
@@ -20,11 +39,22 @@ class listarConsulta extends Component {
                     />
                 <View style={styles.alinhar}>
                 <Text>Listar Consulta</Text>
+                <FlatList
+                data={this.state.listaDeConsultas}
+                keyExtractor={item => item.id}
+                renderItem={this.renderizaItem}
+                />
                 </View>
             </View>
             
-        )
+        );
     }
+
+    renderizaItem = ({item}) => (
+        <View>
+            <Text>{item.IdProntuario}</Text>
+        </View>
+    )
 }
 
 const styles = StyleSheet.create({

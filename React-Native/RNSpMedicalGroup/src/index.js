@@ -1,6 +1,9 @@
 import Cadastrar from './pages/cadastrarConsulta';
 import Listar from './pages/listarConsulta';
-import { createBottomTabNavigator, createAppContainer } from "react-navigation";
+import SignIn from './pages/signIn';
+import { createBottomTabNavigator, createAppContainer, createStackNavigator, createSwitchNavigator } from "react-navigation";
+
+const AuthStack = createStackNavigator({ SignIn });
 
 const consultaNavigator = createBottomTabNavigator(
   {
@@ -21,4 +24,16 @@ const consultaNavigator = createBottomTabNavigator(
   }
 );
 
-export default createAppContainer(consultaNavigator);
+//export default createAppContainer(consultaNavigator);
+
+export default createAppContainer(
+  createSwitchNavigator(
+    {
+      consultaNavigator,
+      AuthStack
+    },
+    {
+      initialRouteName: "AuthStack"
+    }
+  )
+);
