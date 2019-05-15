@@ -1,16 +1,16 @@
-import cadastroConsulta from './pages/cadastrarConsulta';
-import listaConsulta from './pages/listarConsulta';
+import Cadastrar from './pages/cadastrarConsulta';
+import Listar from './pages/listarConsulta';
 import { createBottomTabNavigator, createAppContainer } from "react-navigation";
 
 const consultaNavigator = createBottomTabNavigator(
   {
-      cadastroConsulta,
-      listaConsulta
+      Cadastrar,
+      Listar
   },
   {
-      initialRouteName: "cadastroConsulta",
+      initialRouteName: "Cadastrar",
       tabBarOptions: {
-          showLabel: false ,
+          showLabel: false,
           showIcon: true,
           inactiveBackgroundColor: "lightgray",
           activeBackgroundColor: "#99CC99",

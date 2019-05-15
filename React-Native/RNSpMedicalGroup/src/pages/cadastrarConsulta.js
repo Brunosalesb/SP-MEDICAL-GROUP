@@ -2,11 +2,25 @@ import React, { Component } from "react";
 import { Text, Image, StyleSheet, View, FlatList } from "react-native";
 
 class cadastrarConsulta extends Component {
+    static navigationOptions = {
+        tabBarIcon: ({ tintColor }) => (
+            <Image
+                source={require("../assets/img/add.jpg")}
+                style={styles.tabNavigatorIconHome}
+            />
+        )
+    };
     render(){
         return(
             <View>
-            <Text style={styles.titulo}>{"Desenvolvedor".toUpperCase()}</Text>
-            <Text style={styles.nome}>{"Nome: Bruno Sales Bernardes"}</Text>
+                <View style={styles.barraTopo}></View>
+                    <Image
+                    source={require("../assets/img/icon-login.png")}
+                    style={styles.logo}
+                    />
+                <View style={styles.alinhar}>
+                <Text>Cadastrar Consulta</Text>
+                </View>
             </View>
             
         )
@@ -14,19 +28,25 @@ class cadastrarConsulta extends Component {
 }
 
 const styles = StyleSheet.create({
-    titulo: {
-        textAlign: "center",
-        marginTop: 20
+    tabNavigatorIconHome: {
+        width: 30,
+        height: 30
     },
-    nome: {
-        textAlign: "center",
-        marginTop: 120
+    barraTopo: {
+        height: 30,
+        backgroundColor: "#99CC99"
     },
-    dados: {
-        textAlign: "center",
-        marginTop: 8
+    alinhar: {
+        alignItems: "center"
+    },
+    logo: {
+        width: 50,
+        height: 100,
+        resizeMode: 'contain',
+        marginLeft: 30
     }
 })
+
 
 
 export default cadastrarConsulta;
