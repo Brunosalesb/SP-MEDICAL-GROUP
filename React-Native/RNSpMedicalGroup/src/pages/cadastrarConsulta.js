@@ -14,12 +14,12 @@ class cadastrarConsulta extends Component {
         return(
             <View>
                 <View style={styles.barraTopo}></View>
+                <View style={styles.alinhar}>
                     <Image
                     source={require("../assets/img/icon-login.png")}
                     style={styles.logo}
                     />
-                <View style={styles.alinhar}>
-                <Text>Cadastrar Consulta</Text>
+                <Text>{'Cadastrar consulta'.toUpperCase()}</Text>
                 </View>
             </View>
             
@@ -42,8 +42,7 @@ const styles = StyleSheet.create({
     logo: {
         width: 50,
         height: 100,
-        resizeMode: 'contain',
-        marginLeft: 30
+        resizeMode: 'contain'
     }
 })
 
