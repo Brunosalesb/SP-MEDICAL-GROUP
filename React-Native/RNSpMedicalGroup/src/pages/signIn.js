@@ -40,7 +40,9 @@ class signIn extends Component {
             <ImageBackground style={styles.fundo} source={require('../assets/img/fundo.jpg')}>
                 <View>
                     <View style={styles.centralizarInput}>
+                    <View style={styles.quadrado}>
                     <Image style={styles.logo} source={require('../assets/img/icon-login.png')}></Image>
+                    <Text style={styles.nome}>SpMedicalGroup</Text>
                   <TextInput
                   style={styles.email}
                     placeholder="email"
@@ -51,6 +53,7 @@ class signIn extends Component {
         
                   <TextInput
                   style={styles.senha}
+                  secureTextEntry={true}
                     placeholder="senha"
                     placeholderTextColor="#FFFFFF"
                     password="true"
@@ -61,8 +64,9 @@ class signIn extends Component {
                    style={styles.botao}
                     onPress={this.realizarLogin}
                     >
-                    <Text>LOGIN</Text>
+                    <Text style={styles.login}>LOGIN</Text>
                     </TouchableOpacity>
+                    </View>
                     </View>
                   </View>
                   </ImageBackground>
@@ -74,11 +78,24 @@ class signIn extends Component {
                    height: '100%',
                    width: '100%'
                 },
+                quadrado: {
+                  backgroundColor: '#1a1a1a',
+                   width: '70%',
+                   height: '80%',
+                   justifyContent: 'center',
+                    alignItems: 'center',
+                    borderRadius: 50
+                },
+                nome: {
+                  color: 'white',
+                  marginTop: 10,
+                  marginBottom: 40
+
+                },
                 logo: {
-                    width: 100,
-                    height: 100,
-                    resizeMode: 'contain',
-                    marginBottom: 170
+                    width: 60,
+                    height: 60,
+                    resizeMode: 'contain'
                 },
                 centralizarInput: {
                     height: '100%',
@@ -86,12 +103,18 @@ class signIn extends Component {
                     alignItems: 'center'
                 },
                 email: {
-                    width:"50%"
+                    width:"80%",
+                    height: "auto",
+                    color: 'white'
                 },
                 senha: {
-                    width:"50%"
+                    width:"80%",
+                    height: "auto",
+                    color: 'white'
                 },
-                botao: {
+                login: {
+                  color: 'white',
+                  marginTop: 10
                 }
             })
 export default signIn;

@@ -6,7 +6,7 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>Eu acho que isso nao funciona!</Text>
-      </View>
+    </View>
     );
   }
 }
