@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Text, Image, StyleSheet, View, FlatList, AsyncStorage } from "react-native";
 import api from "../services/api";
+import { ScrollView } from "react-native-gesture-handler";
 
 class listarConsulta extends Component {
     static navigationOptions = {
@@ -52,14 +53,15 @@ class listarConsulta extends Component {
                     style={styles.logo}
                     />
                 <Text style={styles.titulo}>{'Lista de consultas'.toUpperCase()}</Text>
-                <View>
+                </View>
                 <FlatList
+                  onEndReachedThreshold={0.1}
+                contentContainerStyle={styles.contentContainer}
+                style={styles.flatlist} 
                 data={this.state.listaDeConsultas}
                 keyExtractor={item => item.id.toString()}
                 renderItem={this.renderizaItem}
                 />
-                </View>
-                </View>
             </View>
             
         );
@@ -67,11 +69,11 @@ class listarConsulta extends Component {
 
     renderizaItem = ({item}) => (
         <View style={styles.lista}>
-            <Text>{"Paciente: "}{item.idProntuarioNavigation.nome}</Text>
-            <Text>{"Médico: "}{item.idMedicoNavigation.nome}</Text>
-            <Text>{"Descricao: "}{item.descricao}</Text>
-            <Text>{"Situação: "}{item.idSituacaoNavigation.nome}</Text>
-            <Text>{"Data: "}{item.dataDaConsulta}</Text>
+            <Text style={styles.paciente}>{"Paciente: "}{item.idProntuarioNavigation.nome}</Text>
+            <Text style={styles.medico}>{"Médico: "}{item.idMedicoNavigation.nome}</Text>
+            <Text style={styles.descricao}>{"Descricao: "}{item.descricao}</Text>
+            <Text style={styles.situacao}>{"Situação: "}{item.idSituacaoNavigation.nome}</Text>
+            <Text style={styles.data}>{"Data: "}{item.dataDaConsulta}</Text>
         </View>
     )
 }
@@ -94,7 +96,26 @@ const styles = StyleSheet.create({
         resizeMode: 'contain'
     },
     lista: {
-        marginTop: 50
+        marginTop: 50,
+        width: "80%",
+    },
+    contentContainer: {
+        alignItems: 'center'
+    },
+    paciente: {
+        maxWidth: "50%"
+    },
+    medico: {
+        maxWidth: "50%"
+    },
+    descricao: {
+        maxWidth: "50%"
+    },
+    situacao: {
+        maxWidth: "50%"
+    },
+    data: {
+        maxWidth: "50%"
     }
 })
 

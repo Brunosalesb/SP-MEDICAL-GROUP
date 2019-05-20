@@ -7,11 +7,11 @@ const AuthStack = createStackNavigator({ SignIn });
 
 const consultaNavigator = createBottomTabNavigator(
   {
-      Cadastrar,
-      Listar
+    Listar,
+    //Cadastrar
   },
   {
-      initialRouteName: "Cadastrar",
+      initialRouteName: "Listar",
       tabBarOptions: {
           showLabel: false,
           showIcon: true,
