@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Text, Image, StyleSheet, View, FlatList, AsyncStorage } from "react-native";
+import { Text, Image, StyleSheet, View, FlatList, AsyncStorage, Button } from "react-native";
 import api from "../services/api";
 import { ScrollView } from "react-native-gesture-handler";
+import Icon from 'react-native-vector-icons/Ionicons';
 
 class listarConsulta extends Component {
     static navigationOptions = {
@@ -46,7 +47,9 @@ class listarConsulta extends Component {
     render(){
         return(
             <View>
-                <View style={styles.barraTopo}></View>
+                <View style={styles.barraTopo}>
+                    <Icon style={styles.sair} size={24} name="md-exit" onPress={this.logout}></Icon>
+                </View>
                 <View style={styles.alinhar}>
                     <Image
                     source={require("../assets/img/icon-login.png")}
@@ -67,6 +70,11 @@ class listarConsulta extends Component {
         );
     }
 
+    logout = async() => {
+        await AsyncStorage.clear();
+        this.props.navigation.navigate("AuthStack");
+    }
+
     renderizaItem = ({item}) => (
         <View style={styles.lista}>
             <Text style={styles.paciente}>{"Paciente: "}{item.idProntuarioNavigation.nome}</Text>
@@ -84,8 +92,9 @@ const styles = StyleSheet.create({
         height: 30
     },
     barraTopo: {
-        height: 30,
-        backgroundColor: "#99CC99"
+        height: 25,
+        backgroundColor: "#99CC99",
+        flexDirection: 'row-reverse'
     },
     alinhar: {
         alignItems: "center"
@@ -97,25 +106,33 @@ const styles = StyleSheet.create({
     },
     lista: {
         marginTop: 50,
-        width: "80%",
+        width: "80%"
     },
     contentContainer: {
         alignItems: 'center'
     },
     paciente: {
-        maxWidth: "50%"
+        maxWidth: "50%",
+        fontSize: 15
     },
     medico: {
-        maxWidth: "50%"
+        maxWidth: "50%",
+        fontSize: 15
     },
     descricao: {
-        maxWidth: "50%"
+        maxWidth: "50%",
+        fontSize: 15
     },
     situacao: {
-        maxWidth: "50%"
+        maxWidth: "50%",
+        fontSize: 15
     },
     data: {
-        maxWidth: "50%"
+        maxWidth: "50%",
+        fontSize: 15
+    },
+    sair: {
+        paddingRight: 20
     }
 })
 

@@ -45,7 +45,7 @@ class signIn extends Component {
                     <Text style={styles.nome}>SpMedicalGroup</Text>
                   <TextInput
                   style={styles.email}
-                    placeholder="email"
+                    placeholder="Email"
                     placeholderTextColor="#FFFFFF"
                     underlineColorAndroid="#FFFFFF"
                     onChangeText={email => this.setState({ email })}
@@ -54,7 +54,7 @@ class signIn extends Component {
                   <TextInput
                   style={styles.senha}
                   secureTextEntry={true}
-                    placeholder="senha"
+                    placeholder="Senha"
                     placeholderTextColor="#FFFFFF"
                     password="true"
                     underlineColorAndroid="#FFFFFF"
@@ -89,7 +89,8 @@ class signIn extends Component {
                 nome: {
                   color: 'white',
                   marginTop: 10,
-                  marginBottom: 40
+                  marginBottom: 40,
+                  fontSize: 15
 
                 },
                 logo: {
