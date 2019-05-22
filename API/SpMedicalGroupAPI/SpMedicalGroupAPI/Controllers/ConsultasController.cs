@@ -115,7 +115,7 @@ namespace SpMedicalGroupAPI.Controllers
                 }
                     return Ok();
             }
-            catch 
+            catch
             {
 
                 return BadRequest();
