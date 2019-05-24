@@ -22,14 +22,14 @@ atualizaEstadoSenha(event){
 
 efetuaLogin(event){
   event.preventDefault();
-  Axios.post('http://192.168.15.28:5000/api/login',{
+  Axios.post('http://192.168.5.46:5000/api/login',{
     email : this.state.email,
     senha : this.state.senha
   })
   .then(data => {
     localStorage.setItem("smg-token", data.data.token);
     localStorage.setItem("tipoUsuario",data.data.tipoUsuario);
-    this.props.history.push('/consulta/cadastrar');
+    this.props.history.push('/consulta/listar');
     console.log(data);
   })
   .catch(erro => {

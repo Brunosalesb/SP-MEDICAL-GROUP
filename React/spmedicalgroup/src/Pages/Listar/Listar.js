@@ -13,7 +13,7 @@ class Listar extends Component{
       
       buscarConsultas(){
       let token = localStorage.getItem("smg-token");
-      fetch('http://192.168.15.28:5000/api/Consultas/Listar',{
+      fetch('http://192.168.5.46:5000/api/Consultas/Listar',{
          method: 'GET',
          headers : {
            'Authorization': 'Bearer ' + token
@@ -78,16 +78,16 @@ class Listar extends Component{
     </nav>
   </div>
   <img src={banner} className="img-fluid" id="banner" alt="banner"></img>
-  <h2 id="h2" className="text-center">Listar Consulta</h2>
+  <h2 id="h2" className="text-center">Lista de consultas</h2>
 
 <table className="table table-striped">
     <thead>
         <tr>
             <th>Paciente</th>
             <th>Médico</th>
-            <th>Data</th>
             <th>Descrição</th>
             <th>Situação</th>
+            <th>Data</th>
         </tr>
     </thead>
     <tbody>
@@ -97,9 +97,9 @@ class Listar extends Component{
                     <tr key={consulta.id}>
                         <td>{consulta.idProntuarioNavigation.nome}</td>
                         <td>{consulta.idMedicoNavigation.nome}</td>
-                        <td>{consulta.dataDaConsulta}</td>
                         <td>{consulta.descricao}</td>
                         <td>{consulta.idSituacaoNavigation.nome}</td>
+                        <td>{consulta.dataDaConsulta}</td>
                     </tr>
                 );
             })
