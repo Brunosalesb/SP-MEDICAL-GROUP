@@ -104,35 +104,34 @@ const styles = StyleSheet.create({
         height: 100,
         resizeMode: 'contain'
     },
-    lista: {
-        marginTop: 50,
-        width: "80%"
-    },
     contentContainer: {
         alignItems: 'center'
     },
     paciente: {
-        maxWidth: "50%",
         fontSize: 15
     },
     medico: {
-        maxWidth: "50%",
         fontSize: 15
     },
     descricao: {
-        maxWidth: "50%",
         fontSize: 15
     },
     situacao: {
-        maxWidth: "50%",
         fontSize: 15
     },
     data: {
-        maxWidth: "50%",
         fontSize: 15
     },
     sair: {
         paddingRight: 20
+    },
+    lista: {
+        minWidth: "80%",
+        minHeight: "13%",
+        borderWidth: 1,
+        borderColor: 'black',
+        margin: 30,
+        backgroundColor:"#99CC99"
     }
 })
 
