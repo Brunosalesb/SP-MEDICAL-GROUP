@@ -6,6 +6,7 @@ import NaoEncontrada from "./Pages/NaoEncontrada/NaoEncontrada";
 import App from './Pages/App/App';
 import CadastrarUsuario from './Pages/CadastrarUsuario/CadastrarUsuario';
 import CadastrarConsulta from './Pages/CadastrarConsulta/CadastrarConsulta';
+import Firebase from './Pages/Firebase/Firebase';
 import Listar from './Pages/Listar/Listar';
 import {Route, BrowserRouter as Router, Switch, Redirect} from 'react-router-dom';
 import {usuarioAutenticado} from './services/auth';
@@ -25,6 +26,7 @@ const rotas = (
             <Switch>
                 <Route exact path="/" component={App}/>
                 <Route exact path="/usuario/cadastrar" component={CadastrarUsuario}/>
+                <Route exact path="/firebase" component={Firebase}/>
                 <Permissao path="/consulta/cadastrar" component={CadastrarConsulta}/>
                 <Permissao path="/consulta/listar" component={Listar}/>
                 <Route component={NaoEncontrada}/>

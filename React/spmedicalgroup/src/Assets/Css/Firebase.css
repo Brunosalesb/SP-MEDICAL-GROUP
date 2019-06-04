@@ -1,0 +1,24 @@
+.fundo{
+    background-color: aquamarine;
+    width: 100%;
+}
+
+.medico{
+    width: 50%;
+    float: left;
+    text-align: center;
+    background-color: greenyellow;
+    height: 100vh;
+}
+
+.paciente{
+    width: 50%;
+    float: right;
+    text-align: center;
+    background-color: lightgreen;
+    height: 100vh;
+}
+
+.listaUl{
+    list-style-type: none;
+}
