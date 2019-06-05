@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import firebase from '../../services/firebase';
 import '../../Assets/Css/Firebase.css';
+import logo from '../../Assets/Img/icon-login.png';
+
 
 export default class Firebase extends Component {
 
@@ -61,6 +63,46 @@ export default class Firebase extends Component {
         this.listaMedicosRealTime();
     }
 
+    atualizaEstado(event) {
+        this.setState({ [event.target.name]: event.target.value });
+    }
+
+    cadastrarMedico(event) {
+        event.preventDefault();
+
+        firebase.firestore().collection("Medicos")
+            .add({
+                Nome: this.state.Nome,
+                Especialidade: this.state.Especialidade
+            })
+            .then(() => {
+                alert("Médico cadastrado")
+            })
+            .catch((erro) => {
+                console.log('tag', erro)
+            })
+    }
+
+    cadastrarPaciente(event) {
+        event.preventDefault();
+
+        firebase.firestore().collection("Pacientes")
+            .add({
+                Nome: this.state.Nome,
+                Idade: this.state.Idade,
+                Endereco: this.state.Endereco,
+                Doenca: this.state.Doenca
+            })
+            .then(() => {
+                alert("Paciente cadastrado")
+            })
+            .catch((erro) => {
+                console.log('tag', erro)
+            })
+    }
+
+
+
     render() {
         return (
             <div className="fundo">
@@ -92,6 +134,42 @@ export default class Firebase extends Component {
                             })
                         }
                     </ul>
+                </div>
+
+                <div className="medico2">
+                    <h2>Cadastrar medico</h2>
+                    <form onSubmit={this.cadastrarMedico.bind(this)}>
+                        <div>
+                            <input type='text' name="Nome" value={this.state.Nome} onChange={this.atualizaEstado.bind(this)} placeholder="Nome" />
+                        </div>
+                        <div>
+                            <input type="text" name="Especialidade" value={this.state.Especialidade} onChange={this.atualizaEstado.bind(this)} placeholder="Especialidade" />
+                        </div>
+                        <div>
+                            <button type="submit">Cadastrar</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div className="paciente2">
+                    <h2>Cadastrar paciente</h2>
+                    <form onSubmit={this.cadastrarPaciente.bind(this)}>
+                        <div>
+                            <input type='text' name="Nome" value={this.state.Nome} onChange={this.atualizaEstado.bind(this)} placeholder="Nome" />
+                        </div>
+                        <div>
+                            <input type="text" name="Idade" value={this.state.Idade} onChange={this.atualizaEstado.bind(this)} placeholder="Idade" />
+                        </div>
+                        <div>
+                            <input type="text" name="Endereco" value={this.state.Endereco} onChange={this.atualizaEstado.bind(this)} placeholder="Endereço" />
+                        </div>
+                        <div>
+                            <input type="text" name="Doenca" value={this.state.Doenca} onChange={this.atualizaEstado.bind(this)} placeholder="Doença" />
+                        </div>
+                        <div>
+                            <button type="submit">Cadastrar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         )

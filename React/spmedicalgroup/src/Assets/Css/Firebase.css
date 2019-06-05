@@ -1,22 +1,41 @@
 .fundo{
     background-color: aquamarine;
     width: 100%;
+    align-content: center;
 }
 
 .medico{
     width: 50%;
     float: left;
     text-align: center;
-    background-color: greenyellow;
-    height: 100vh;
+    background-color: #99CC99;
+    height: 50vh;
 }
 
 .paciente{
     width: 50%;
     float: right;
     text-align: center;
-    background-color: lightgreen;
-    height: 100vh;
+    background-color: #99CC99;
+    height: 50vh;
+    border-left:3px solid black;
+}
+
+.medico2{
+    width: 50%;
+    float: left;
+    text-align: center;
+    background-color: #99CC99;
+    height: 50vh;
+}
+
+.paciente2{
+    width: 50%;
+    float: right;
+    text-align: center;
+    background-color: #99CC99;
+    height: 50vh;
+    border-left:3px solid black;
 }
 
 .listaUl{
