@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import firebase from '../../services/firebase';
 import '../../Assets/Css/Firebase.css';
-import logo from '../../Assets/Img/icon-login.png';
-
 
 export default class Firebase extends Component {
 
@@ -12,7 +10,8 @@ export default class Firebase extends Component {
         this.state = {
             listaMedicos: [],
             listaPacientes: [],
-            Nome: '',
+            NomeMedico: '',
+            NomePaciente: '',
             Idade: '',
             Endereco: '',
             Doenca: '',
@@ -30,7 +29,7 @@ export default class Firebase extends Component {
                         Doenca: paciente.data().Doenca,
                         Endereco: paciente.data().Endereco,
                         Idade: paciente.data().Idade,
-                        Nome: paciente.data().Nome
+                        NomePaciente: paciente.data().NomePaciente
                     })
                 })
 
@@ -48,7 +47,7 @@ export default class Firebase extends Component {
                 medicos.forEach((medico) => {
                     medicosArray.push({
                         Especialidade: medico.data().Especialidade,
-                        Nome: medico.data().Nome
+                        NomeMedico: medico.data().NomeMedico
                     })
                 })
 
@@ -72,7 +71,7 @@ export default class Firebase extends Component {
 
         firebase.firestore().collection("Medicos")
             .add({
-                Nome: this.state.Nome,
+                NomeMedico: this.state.Nome,
                 Especialidade: this.state.Especialidade
             })
             .then(() => {
@@ -88,7 +87,7 @@ export default class Firebase extends Component {
 
         firebase.firestore().collection("Pacientes")
             .add({
-                Nome: this.state.Nome,
+                NomePaciente: this.state.Nome,
                 Idade: this.state.Idade,
                 Endereco: this.state.Endereco,
                 Doenca: this.state.Doenca
@@ -113,7 +112,7 @@ export default class Firebase extends Component {
                             this.state.listaMedicos.map((medico) => {
                                 return (
                                     <li key={medico.id}>
-                                        {medico.Nome} - {medico.Especialidade}
+                                        {medico.NomeMedico} - {medico.Especialidade}
                                     </li>
                                 )
                             })
@@ -128,7 +127,7 @@ export default class Firebase extends Component {
                             this.state.listaPacientes.map((paciente) => {
                                 return (
                                     <li key={paciente.id}>
-                                        {paciente.Nome} - {paciente.Idade} anos - {paciente.Endereco} - {paciente.Doenca}
+                                        {paciente.NomePaciente} - {paciente.Idade} anos - {paciente.Endereco} - {paciente.Doenca}
                                     </li>
                                 )
                             })
@@ -175,5 +174,3 @@ export default class Firebase extends Component {
         )
     }
 }
-
-//para converter endereço em lat e long, usar biblioteca react-geocode
