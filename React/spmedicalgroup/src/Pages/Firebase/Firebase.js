@@ -10,6 +10,7 @@ export default class Firebase extends Component {
         this.state = {
             listaMedicos: [],
             listaPacientes: [],
+            id: '',
             NomeMedico: '',
             NomePaciente: '',
             Idade: '',
@@ -26,6 +27,7 @@ export default class Firebase extends Component {
 
                 pacientes.forEach((paciente) => {
                     pacientesArray.push({
+                        id: paciente.id,
                         Doenca: paciente.data().Doenca,
                         Endereco: paciente.data().Endereco,
                         Idade: paciente.data().Idade,
@@ -46,6 +48,7 @@ export default class Firebase extends Component {
 
                 medicos.forEach((medico) => {
                     medicosArray.push({
+                        id: medico.id,
                         Especialidade: medico.data().Especialidade,
                         NomeMedico: medico.data().NomeMedico
                     })
@@ -71,11 +74,12 @@ export default class Firebase extends Component {
 
         firebase.firestore().collection("Medicos")
             .add({
-                NomeMedico: this.state.Nome,
+                NomeMedico: this.state.NomeMedico,
                 Especialidade: this.state.Especialidade
             })
             .then(() => {
                 alert("Médico cadastrado")
+                this.limparFormulario();
             })
             .catch((erro) => {
                 console.log('tag', erro)
@@ -87,86 +91,144 @@ export default class Firebase extends Component {
 
         firebase.firestore().collection("Pacientes")
             .add({
-                NomePaciente: this.state.Nome,
+                NomePaciente: this.state.NomePaciente,
                 Idade: this.state.Idade,
                 Endereco: this.state.Endereco,
                 Doenca: this.state.Doenca
             })
             .then(() => {
                 alert("Paciente cadastrado")
+                this.limparFormulario();
             })
             .catch((erro) => {
                 console.log('tag', erro)
             })
     }
 
+    limparFormulario() {
+        this.setState({
+            NomeMedico: '',
+            NomePaciente: '',
+            Idade: '',
+            Endereco: '',
+            Doenca: '',
+            Especialidade: ''
+        })
+    }
 
+    excluirPorIdMedico(event) {
+        event.preventDefault();
+
+        if (window.confirm("Deseja excluir o documento realmente, não vai ter volta, tome cuidado!")) {
+            firebase.firestore().collection("Medicos")
+                .doc(event.target.id)
+                .delete()
+                .then(() => {
+                    alert("Excluído com sucesso!");
+                })
+        }
+    }
+
+    excluirPorIdPaciente(event) {
+        event.preventDefault();
+
+        if (window.confirm("Deseja excluir o documento realmente, não vai ter volta, tome cuidado!")) {
+            firebase.firestore().collection("Pacientes")
+                .doc(event.target.id)
+                .delete()
+                .then(() => {
+                    alert("Excluído com sucesso!");
+                })
+        }
+    }
 
     render() {
         return (
             <div className="fundo">
+                <h1>Informações - pacientes e médicos</h1>
                 <div className="medico">
-                    <h2>Dados do medico</h2>
-                    <ul className="listaUl">
+                    <table className="tableMedico">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Especialidade</th>
+                            </tr>
+                        </thead>
                         {
                             this.state.listaMedicos.map((medico) => {
                                 return (
-                                    <li key={medico.id}>
-                                        {medico.NomeMedico} - {medico.Especialidade}
-                                    </li>
+
+                                    <tbody>
+                                        <tr key={medico.id}>
+                                            <td>{medico.NomeMedico}</td>
+                                            <td> {medico.Especialidade}</td>
+                                            <td  className="delMedico" >
+                                            <button  className="delMedico"  id={medico.id} onClick={this.excluirPorIdMedico.bind(this)}>X</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
                                 )
                             })
                         }
-                    </ul>
+                    </table>
                 </div>
 
                 <div className="paciente">
-                    <h2>Dados do paciente</h2>
-                    <ul className="listaUl">
+                    <table className="tablePaciente">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Idade</th>
+                                <th>Endereço</th>
+                                <th>Doença</th>
+                            </tr>
+                        </thead>
                         {
                             this.state.listaPacientes.map((paciente) => {
                                 return (
-                                    <li key={paciente.id}>
-                                        {paciente.NomePaciente} - {paciente.Idade} anos - {paciente.Endereco} - {paciente.Doenca}
-                                    </li>
+                                    <tbody>
+                                        <tr key={paciente.id}>
+                                            <td>{paciente.NomePaciente}</td>
+                                            <td>{paciente.Idade} anos</td>
+                                            <td>{paciente.Endereco}</td>
+                                            <td>{paciente.Doenca}</td>
+                                            <td className="delPaciente">
+                                            <button className="delPaciente" id={paciente.id} onClick={this.excluirPorIdPaciente.bind(this)}>X</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
                                 )
                             })
                         }
-                    </ul>
+                    </table>
                 </div>
 
                 <div className="medico2">
-                    <h2>Cadastrar medico</h2>
+                    <h3>Cadastrar médico</h3>
                     <form onSubmit={this.cadastrarMedico.bind(this)}>
                         <div>
-                            <input type='text' name="Nome" value={this.state.Nome} onChange={this.atualizaEstado.bind(this)} placeholder="Nome" />
+                            <input type='text' required name="NomeMedico" value={this.state.NomeMedico} onChange={this.atualizaEstado.bind(this)} placeholder="Nome" />
                         </div>
                         <div>
-                            <input type="text" name="Especialidade" value={this.state.Especialidade} onChange={this.atualizaEstado.bind(this)} placeholder="Especialidade" />
+                            <input type="text" required name="Especialidade" value={this.state.Especialidade} onChange={this.atualizaEstado.bind(this)} placeholder="Especialidade" />
                         </div>
-                        <div>
+                        <div className="cadastrarMedico">
                             <button type="submit">Cadastrar</button>
                         </div>
                     </form>
                 </div>
 
                 <div className="paciente2">
-                    <h2>Cadastrar paciente</h2>
+                    <h3>Cadastrar paciente</h3>
                     <form onSubmit={this.cadastrarPaciente.bind(this)}>
                         <div>
-                            <input type='text' name="Nome" value={this.state.Nome} onChange={this.atualizaEstado.bind(this)} placeholder="Nome" />
-                        </div>
-                        <div>
-                            <input type="text" name="Idade" value={this.state.Idade} onChange={this.atualizaEstado.bind(this)} placeholder="Idade" />
-                        </div>
-                        <div>
-                            <input type="text" name="Endereco" value={this.state.Endereco} onChange={this.atualizaEstado.bind(this)} placeholder="Endereço" />
-                        </div>
-                        <div>
-                            <input type="text" name="Doenca" value={this.state.Doenca} onChange={this.atualizaEstado.bind(this)} placeholder="Doença" />
-                        </div>
-                        <div>
-                            <button type="submit">Cadastrar</button>
+                            <input type='text' required name="NomePaciente" value={this.state.NomePaciente} onChange={this.atualizaEstado.bind(this)} placeholder="Nome" />
+                            <input type="text" required name="Idade" value={this.state.Idade} onChange={this.atualizaEstado.bind(this)} placeholder="Idade" />
+                            <input type="text" required name="Endereco" value={this.state.Endereco} onChange={this.atualizaEstado.bind(this)} placeholder="Endereço" />
+                            <input type="text" required name="Doenca" value={this.state.Doenca} onChange={this.atualizaEstado.bind(this)} placeholder="Doença" />
+                            <div className="cadastrarPaciente">
+                                <button type="submit">Cadastrar</button>
+                            </div>
                         </div>
                     </form>
                 </div>

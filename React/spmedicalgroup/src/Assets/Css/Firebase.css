@@ -1,43 +1,123 @@
+.tableMedico td, table th{
+    border: 1px solid black;
+    padding: 3px 3px 3px 3px;
+}
+
+.tablePaciente td, table th{
+    border: 1px solid black;
+    padding: 3px 3px 3px 3px;
+}
+
 .fundo{
-    background-color: aquamarine;
     width: 100%;
-    align-content: center;
+}
+
+.fundo h1{
+    text-align: center;
+    margin-top: 1%;
+    margin-bottom: 4%;
 }
 
 .medico{
-    width: 50%;
-    float: left;
-    text-align: center;
-    background-color: #99CC99;
-    height: 50vh;
+    float: right;
+    margin-right: 18%;
 }
 
 .paciente{
-    width: 50%;
-    float: right;
-    text-align: center;
-    background-color: #99CC99;
-    height: 50vh;
-    border-left:3px solid black;
+    margin-left: 18%;
 }
 
 .medico2{
-    width: 50%;
-    float: left;
-    text-align: center;
-    background-color: #99CC99;
-    height: 50vh;
+    float: right;
+    margin-right: 18%;
+    margin-top: 13%
 }
 
 .paciente2{
-    width: 50%;
-    float: right;
-    text-align: center;
-    background-color: #99CC99;
-    height: 50vh;
-    border-left:3px solid black;
+    margin-left: 18%;
+    margin-top: 13%;
 }
 
-.listaUl{
-    list-style-type: none;
+.medico2 input{
+    border: 2px solid #aaaaaa;
+    border-radius: 4px;
+    margin:8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: .3s;
+}
+
+.medico2 input:focus{
+    border-color: #99CC99;
+    box-shadow: 0 0 8px 0 #99CC99;
+}
+
+.paciente2 input{
+    border: 2px solid #aaaaaa;
+    border-radius: 4px;
+    margin:8px 0;
+    outline: none;
+    padding: 8px;
+    box-sizing: border-box;
+    transition: .3s;
+    margin-right: 7px;
+}
+
+.paciente2 input:focus{
+    border-color: #99CC99;
+    box-shadow: 0 0 8px 0 #99CC99;
+}
+
+.medico2 button{
+color: white ;
+text-transform: uppercase;
+background: #aaaaaa;
+padding: 10px;
+border: 2px solid #aaaaaa ;
+border-radius: 6px;
+display: inline-block;
+width: 60%;
+}
+
+.medico2 button:hover{
+    color: black ;
+background: #99CC99;
+border:2px solid #99CC99;
+transition: all 0.4s ease 0s;
+}
+
+.cadastrarMedico{
+    text-align: center;
+}
+
+.paciente2 button{
+    color: white ;
+    text-transform: uppercase;
+    background: #aaaaaa;
+    padding: 10px;
+    border: 2px solid #aaaaaa ;
+    border-radius: 6px;
+    display: inline-block;
+    width: 10%;
+    }
+    
+    .paciente2 button:hover{
+        color: black ;
+    background: #99CC99;
+    border:2px solid #99CC99;
+    transition: all 0.4s ease 0s;
+    }
+
+.delMedico{
+    margin-left: 10%;
+    background-color: red;
+    border: 0px solid red;
+    width: 15px;
+}
+
+.delPaciente{
+    background-color: red;
+    border: 0px solid red;
+    width: 15px;
 }
