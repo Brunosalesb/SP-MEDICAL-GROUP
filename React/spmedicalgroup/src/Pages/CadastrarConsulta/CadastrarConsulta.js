@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../../Assets/Css/Cadastrar.css';
 import logo from '../../Assets/Img/icon-login.png';
 import banner from '../../Assets/Img/Mindful-Surgery-Banner.jpg';
-// import sair from "../../services/logout";
+import {logout} from "../../services/logout";
 
 class CadastrarConsulta extends Component {
   constructor() {
@@ -30,7 +30,7 @@ class CadastrarConsulta extends Component {
     this.setState({ idMedico: event.target.value })
   }
   atualizaDescricao(event) {
-    this.setState({descricao: event.target.value})
+    this.setState({ descricao: event.target.value })
   }
   atualizaDataConsulta(event) {
     this.setState({ dataDaConsulta: event.target.value })
@@ -42,7 +42,7 @@ class CadastrarConsulta extends Component {
     console.log('cadastrar')
     fetch('http://192.168.5.46:5000/api/Consultas/Cadastrar', {
       method: 'POST',
-      body: JSON.stringify({ IdProntuario: this.state.idProntuario, IdMedico: this.state.idMedico, Descricao: this.state.descricao, DataDaConsulta: this.state.dataDaConsulta, IdSituacao: this.state.idSituacao}),
+      body: JSON.stringify({ IdProntuario: this.state.idProntuario, IdMedico: this.state.idMedico, Descricao: this.state.descricao, DataDaConsulta: this.state.dataDaConsulta, IdSituacao: this.state.idSituacao }),
       headers: {
         "Content-Type": "application/json",
         'Authorization': 'Bearer ' + token
@@ -85,6 +85,7 @@ class CadastrarConsulta extends Component {
   }
 
   render() {
+    const tipoUsuario = localStorage.getItem("tipoUsuario")
     return (
       <div>
         <div>
@@ -113,22 +114,30 @@ class CadastrarConsulta extends Component {
 
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
               <ul className="navbar-nav" id="links">
-               <li className="nav-item">
-            <a className="nav-link" href="cadastrar">Cadastrar</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="listar">Listar</a>
-          </li>
-                {/* <li className="nav-item dropdown">
-                  <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Consulta
-            </a>
-                  <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a className="dropdown-item" href="./Cadastrar.html">Cadastrar</a>
-                    <a className="dropdown-item" href="./Listar.html">Listar</a>
-                  </div>
-                </li> */}
+              {(() => {
+                  if (tipoUsuario === 'Administrador') {
+                    return (
+                      <li className="nav-item">
+                        <a className="nav-link" href="cadastrar">Cadastrar</a>
+                      </li>
+                    )
+                  }
+                })()}
+                <li className="nav-item">
+                  <a className="nav-link" href="listar">Listar</a>
+                </li>
+                {(() => {
+                  if (tipoUsuario === 'Administrador') {
+                    return (
+                      <li className="nav-item">
+                        <a className="nav-link" href="/firebase">Firebase</a>
+                      </li>
+                    )
+                  }
+                })()}
+                <li className="nav-item">
+                  <a className="nav-link" onClick={logout} href="/">Sair</a>
+                </li>
               </ul>
             </div>
           </nav>
@@ -166,8 +175,8 @@ class CadastrarConsulta extends Component {
             </div>
 
             <div className="form-group" id="barraDescricao">
-            <label htmlFor="exampleFormControlTextarea1">Descrição</label>
-            <textarea type="text" value={this.state.descricao} onChange={this.atualizaDescricao} className="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+              <label htmlFor="exampleFormControlTextarea1">Descrição</label>
+              <textarea type="text" value={this.state.descricao} onChange={this.atualizaDescricao} className="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
             </div>
 
             <label htmlFor="example-datetime-local-input" className="col-2 col-form-label">Data</label>

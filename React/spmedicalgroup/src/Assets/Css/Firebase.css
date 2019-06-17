@@ -20,7 +20,7 @@
 
 .medico{
     float: right;
-    margin-right: 18%;
+    margin-right: 13%;
 }
 
 .paciente{
@@ -29,13 +29,17 @@
 
 .medico2{
     float: right;
-    margin-right: 18%;
-    margin-top: 13%
+    margin-right: 15%;
+    margin-top: 13%;
 }
 
 .paciente2{
-    margin-left: 18%;
+    margin-left: 24%;
     margin-top: 13%;
+}
+
+.paciente2 h3{
+    margin-left: 8%;
 }
 
 .medico2 input{
@@ -89,6 +93,10 @@ transition: all 0.4s ease 0s;
 
 .cadastrarMedico{
     text-align: center;
+}
+
+.cadastrarPaciente{
+    margin-left: 11%;
 }
 
 .paciente2 button{

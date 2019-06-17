@@ -10,12 +10,22 @@ import Firebase from './Pages/Firebase/Firebase';
 import Listar from './Pages/Listar/Listar';
 import {Route, BrowserRouter as Router, Switch, Redirect} from 'react-router-dom';
 import {usuarioAutenticado} from './services/auth';
+import {usuarioAutenticadoAdm} from './services/auth';
 
 const Permissao = ({component : Component}) => (
     <Route
     render = {props => usuarioAutenticado() ?
         (<Component {...props} />) :
         (<Redirect to={{pathname :  '/',state : {from : props.location}}}/>)
+    }
+    />
+)
+;
+const PermissaoAdm = ({component : Component}) => (
+    <Route
+    render = {props => usuarioAutenticadoAdm() ?
+        (<Component {...props} />) :
+        (<Redirect to={{pathname :  '/consulta/listar',state : {from : props.location}}}/>)
     }
     />
 );
@@ -26,8 +36,8 @@ const rotas = (
             <Switch>
                 <Route exact path="/" component={App}/>
                 <Route exact path="/usuario/cadastrar" component={CadastrarUsuario}/>
-                <Route exact path="/firebase" component={Firebase}/>
-                <Permissao path="/consulta/cadastrar" component={CadastrarConsulta}/>
+                <PermissaoAdm exact path="/firebase" component={Firebase}/>
+                <PermissaoAdm path="/consulta/cadastrar" component={CadastrarConsulta}/>
                 <Permissao path="/consulta/listar" component={Listar}/>
                 <Route component={NaoEncontrada}/>
             </Switch>

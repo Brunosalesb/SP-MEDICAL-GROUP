@@ -1,1 +1,1 @@
- export const logout = () => localStorage.removeItem('smg-token');
+ export const logout = () => localStorage.removeItem('smg-token') && localStorage.removeItem('tipoUsuario');

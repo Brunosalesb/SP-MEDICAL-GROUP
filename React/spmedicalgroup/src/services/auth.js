@@ -1,1 +1,2 @@
 export const usuarioAutenticado = () => localStorage.getItem('smg-token') != null;
+export const usuarioAutenticadoAdm = () => localStorage.getItem('smg-token') != null && localStorage.getItem('tipoUsuario') === 'Administrador';

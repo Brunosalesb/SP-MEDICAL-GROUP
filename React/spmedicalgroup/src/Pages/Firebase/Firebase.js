@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase from '../../services/firebase';
 import '../../Assets/Css/Firebase.css';
+import Axios from 'axios';
 
 export default class Firebase extends Component {
 
@@ -19,6 +20,30 @@ export default class Firebase extends Component {
             Especialidade: ''
         }
     }
+
+
+
+    componentDidMount() {
+        this.listaPacientesRealTime();
+        this.listaMedicosRealTime();
+        this.geocode();
+    }
+
+    atualizaEstado(event) {
+        this.setState({ [event.target.name]: event.target.value });
+    }
+
+    limparFormulario() {
+        this.setState({
+            NomeMedico: '',
+            NomePaciente: '',
+            Idade: '',
+            Endereco: '',
+            Doenca: '',
+            Especialidade: ''
+        })
+    }
+
 
     listaPacientesRealTime() {
         firebase.firestore().collection("Pacientes")
@@ -60,14 +85,6 @@ export default class Firebase extends Component {
             })
     }
 
-    componentDidMount() {
-        this.listaPacientesRealTime()
-        this.listaMedicosRealTime();
-    }
-
-    atualizaEstado(event) {
-        this.setState({ [event.target.name]: event.target.value });
-    }
 
     cadastrarMedico(event) {
         event.preventDefault();
@@ -105,16 +122,6 @@ export default class Firebase extends Component {
             })
     }
 
-    limparFormulario() {
-        this.setState({
-            NomeMedico: '',
-            NomePaciente: '',
-            Idade: '',
-            Endereco: '',
-            Doenca: '',
-            Especialidade: ''
-        })
-    }
 
     excluirPorIdMedico(event) {
         event.preventDefault();
@@ -142,6 +149,29 @@ export default class Firebase extends Component {
         }
     }
 
+
+
+    geocode() {
+        var location = this.state.Endereco;
+        Axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+            params: {
+                address: location,
+                key: 'AIzaSyBYsRGA0hHYEZhpw1tJqGzu6tk66AP9QNY'
+            }
+        })
+
+            .then(function (Response) {
+                console.log(Response);
+                console.log("Endereço: ", Response.data.results[0].formatted_address);
+                console.log("latitude: ", Response.data.results[0].geometry.location.lat);
+                console.log("longitude: ", Response.data.results[0].geometry.location.lng);
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
+
+    }
+
     render() {
         return (
             <div className="fundo">
@@ -150,7 +180,7 @@ export default class Firebase extends Component {
                     <table className="tableMedico">
                         <thead>
                             <tr>
-                                <th>Nome</th>
+                                <th>Médico</th>
                                 <th>Especialidade</th>
                             </tr>
                         </thead>
@@ -158,12 +188,12 @@ export default class Firebase extends Component {
                             this.state.listaMedicos.map((medico) => {
                                 return (
 
-                                    <tbody>
+                                    <tbody key={medico.id}>
                                         <tr key={medico.id}>
                                             <td>{medico.NomeMedico}</td>
                                             <td> {medico.Especialidade}</td>
-                                            <td  className="delMedico" >
-                                            <button  className="delMedico"  id={medico.id} onClick={this.excluirPorIdMedico.bind(this)}>X</button>
+                                            <td className="delMedico" >
+                                                <button className="delMedico" id={medico.id} onClick={this.excluirPorIdMedico.bind(this)}>X</button>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -177,23 +207,23 @@ export default class Firebase extends Component {
                     <table className="tablePaciente">
                         <thead>
                             <tr>
-                                <th>Nome</th>
+                                <th>Paciente</th>
                                 <th>Idade</th>
-                                <th>Endereço</th>
+                                <th>Latitude e longitude</th>
                                 <th>Doença</th>
                             </tr>
                         </thead>
                         {
                             this.state.listaPacientes.map((paciente) => {
                                 return (
-                                    <tbody>
+                                    <tbody key={paciente.id}>
                                         <tr key={paciente.id}>
                                             <td>{paciente.NomePaciente}</td>
                                             <td>{paciente.Idade} anos</td>
                                             <td>{paciente.Endereco}</td>
                                             <td>{paciente.Doenca}</td>
                                             <td className="delPaciente">
-                                            <button className="delPaciente" id={paciente.id} onClick={this.excluirPorIdPaciente.bind(this)}>X</button>
+                                                <button className="delPaciente" id={paciente.id} onClick={this.excluirPorIdPaciente.bind(this)}>X</button>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -224,8 +254,10 @@ export default class Firebase extends Component {
                         <div>
                             <input type='text' required name="NomePaciente" value={this.state.NomePaciente} onChange={this.atualizaEstado.bind(this)} placeholder="Nome" />
                             <input type="text" required name="Idade" value={this.state.Idade} onChange={this.atualizaEstado.bind(this)} placeholder="Idade" />
-                            <input type="text" required name="Endereco" value={this.state.Endereco} onChange={this.atualizaEstado.bind(this)} placeholder="Endereço" />
-                            <input type="text" required name="Doenca" value={this.state.Doenca} onChange={this.atualizaEstado.bind(this)} placeholder="Doença" />
+                            <div>
+                                <input type="text" required name="Endereco" value={this.state.Endereco} onChange={this.atualizaEstado.bind(this)} placeholder="Endereço" />
+                                <input type="text" required name="Doenca" value={this.state.Doenca} onChange={this.atualizaEstado.bind(this)} placeholder="Doença" />
+                            </div>
                             <div className="cadastrarPaciente">
                                 <button type="submit">Cadastrar</button>
                             </div>
@@ -235,4 +267,4 @@ export default class Firebase extends Component {
             </div>
         )
     }
-}
+}   
